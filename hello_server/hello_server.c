@@ -29,8 +29,8 @@ int main(int argc, char* argv[])
         error_handling("socket() error");
 
     memset(&serv_addr, 0, sizeof(serv_addr));
-    serv_addr.sin_family=AF_INET;
-    serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+    serv_addr.sin_family=AF_INET; // IPv4 인터넷 프로토콜
+    serv_addr.sin_addr.s_addr=htonl(INADDR_ANY); // 32bit IPv4 주소
     serv_addr.sin_port = htons(atoi(argv[1]));
 
     // 서버의 네트워크 주소와 포트번호 할당 (서버 소켓 파일에 write)
