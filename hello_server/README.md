@@ -35,3 +35,6 @@ int accept(int sockfd, struct sockaddr_t *addr, socklen_t *addrlen);
 ```
 - 연결 요청을 수락함
 - 성공 시 파일 디스크립터, 실패 시 -1 반환
+
+### 클라이언트와 서버 간의 동작
+- ![image](https://github.com/bellbpng/TCP_IP_Socket_Programming/assets/59792046/80c6b08e-87b8-41b0-98dd-5cf4d483700e)
