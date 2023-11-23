@@ -14,6 +14,36 @@ int socket(int domain, int type, int protocol);
 ```
 - 소켓을 생성하는 함수
 - 성공 시 파일 디스크립터, 실패 시 -1 반환
+- `domain`: 생성할 소켓이 통신을 하기 위해 사용할 프로토콜 설정
+- `type`: 소켓이 데이터를 전송하는데 있어서 사용하게 되는 전송 타입을 설정
+- `protocol`: 두 호스트 간에 통신을 하는데 있어서 특정 프로토콜을 지정하기 위해 사용됨
+
+**Domain**
+
+1. Protocol Family
+
+- `PF_INET`: IPv4 인터넷 프로토콜
+- `PF_INET6`: IPv6 인터넷 프로토콜
+- `PF_LOCAL`: Local 통신을 위한 UNIX 프로토콜
+- `PF_PACKET`: Low level socket을 위한 인터페이스
+- `PF_IPX`: IPX 노벨 프로토콜
+
+
+2. Address Family
+
+- `AF_INET`: IPv4 인터넷 프로토콜
+- `AF_INET6`: IPv6 인터넷 프로토콜
+- `AF_LOCAL`: IPv6 인터넷 프로토콜
+
+**TYPE**
+- `SOCK_STRAM`: 연결지향의 TCP 프로토콜
+- `SOCK_DGRAM`: 데이터그램 지향의 UDP 프로토콜
+- `SOCK_RAW`: 생 소켓 혹은 날 소켓으로 불리우는 저수준 socket 제어 프로토콜
+
+**Protocol**
+- `IPPROTO_TCP`: 연결지향형 데이터 소켓
+- `IPPROTO_UDP`: 비연결지향형 데이터 소켓
+- 0을 넣어주면 **TYPE** 정보를 통해 자동으로 TCP 혹은 UDP 프로토콜이 정해진다.
 
 ```c++
 #include <sys/socket.h>
