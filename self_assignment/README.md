@@ -35,3 +35,48 @@ struct  in_addr {
 - `sin_addr`: 호스트 IP 주소로 이 변수에는 **INADDR_ANY** 와 같은 것이 저장되어야 한다. 혹은, `inet_aton()`, `inet_addr()`, `inet_makeaddr()` 과 같은 라이브러리가 제공하는 함수의 반환값이 저장되어야 한다.
 - `sin_zero`: 8바이틔 더미 데이터. 반드시 0으로 채워져 있어야 함. sockaddr 구조체 크기와 맞추기 위한 용도
 - `server_addr.sin_addr.s_addr = INADDR_ANY`: 서버의 경우 이러한 방식으로 주소를 할당하는데, 이것은 **자동으로 이 컴퓨터에 존재하는 랜카드 중 사용가능한 랜카드의 IP주소를 사용하겠다** 를 의미한다.
+
+## Communication Functions
+```c
+#include <sys/socket.h>
+ssize_t send(int sockfd, const void* msg, size_t nbytes, int flags);
+```
+- `sockfd`: target socket file descriptor
+	- server: accept() 함수로 생성된 소켓
+	- client: socket() 함수로 생성된 소켓
+- 데이터 전송 함수
+- 데이터 전송 성공 시 전송한 데이터 바이트 수, 실패 시 -1 반환
+
+
+```c
+#include <sys/socket.h>
+ssize_t recv(int sockfd, void* buf, size_t len, int flags);
+```
+- `sockfd`: source socket file descriptor
+	- server: accept() 함수로 생성된 소켓
+	- client: socket() 함수로 생성된 소켓
+- 데이터 수신 함수
+- 데이터 수신 성공 시 수신한 데이터 바이트 수, 실패 시 -1 반환
+
+
+```c
+#include <unistd.h>
+ssize_t write(int fd, const void* buf, size_t count);
+```
+- `fd`: target socket file descriptor
+	- server: accept() 함수로 생성된 소켓
+	- client: socket() 함수로 생성된 소켓
+- 파일에 데이터를 쓰는 함수
+- 소켓을 하나의 파일의 형태로 다루기 때문에 가능함
+
+
+```c
+#include <unistd.h>
+ssize_t read(int fd, void* buffer, size_t count);
+```
+- `fd`: target socket file descriptor
+	- server: accept() 함수로 생성된 소켓
+	- client: socket() 함수로 생성된 소켓
+- 파일에 있는 데이터를 읽는 함수
+- 소켓을 하나의 파일의 형태로 다루기 때문에 가능함
+
