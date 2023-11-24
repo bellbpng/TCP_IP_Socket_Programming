@@ -34,4 +34,4 @@ struct  in_addr {
 - `sin_family`: 항상 **AF_INET** 을 설정
 - `sin_addr`: 호스트 IP 주소로 이 변수에는 **INADDR_ANY** 와 같은 것이 저장되어야 한다. 혹은, `inet_aton()`, `inet_addr()`, `inet_makeaddr()` 과 같은 라이브러리가 제공하는 함수의 반환값이 저장되어야 한다.
 - `sin_zero`: 8바이틔 더미 데이터. 반드시 0으로 채워져 있어야 함. sockaddr 구조체 크기와 맞추기 위한 용도
-
+- `server_addr.sin_addr.s_addr = INADDR_ANY`: 서버의 경우 이러한 방식으로 주소를 할당하는데, 이것은 **자동으로 이 컴퓨터에 존재하는 랜카드 중 사용가능한 랜카드의 IP주소를 사용하겠다** 를 의미한다.
